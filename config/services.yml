@@ -1,0 +1,32 @@
+services:
+#####micro-service clients
+  targetServiceClient:
+    class: FastMicroKernel\Components\ServiceClientsFactory
+    factory: ['FastMicroKernel\Components\ServiceClientsFactory', 'getServiceClient']
+    arguments:
+      - '@=constant("TARGET_SERVICE_CLIENT_TRANSPORT")'
+      - /target
+  contentServiceClient:
+    class: FastMicroKernel\Components\ServiceClientsFactory
+    factory: ['FastMicroKernel\Components\ServiceClientsFactory', 'getServiceClient']
+    arguments:
+      - '@=constant("CONTENT_SERVICE_CLIENT_TRANSPORT")'
+      - /content
+
+#####micro-service request builder
+  serviceRequestBuilder:
+    class: FastMicroKernel\Components\ServiceRequestBuilder
+
+#####monolith service
+  service:
+    class: Monolith\Components\Service
+    arguments:
+      - '@targetServiceClient'
+      - '@contentServiceClient'
+      - '@serviceRequestBuilder'
+
+#####middleware
+  testMiddlware:
+    class: FastMicroKernel\Components\Test
+  testDelegate:
+    class: FastMicroKernel\Components\TestDelegate
