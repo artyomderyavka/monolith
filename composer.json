@@ -1,7 +1,7 @@
 {
     "require": {
-        "wikimedia/composer-merge-plugin": "dev-master",
-        "artyomderyavka/fast-micro-kernel": "dev-master"
+        "artyomderyavka/fast-micro-kernel": "dev-master",
+        "artyomderyavka/target": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -12,19 +12,5 @@
     "classmap": [
         "Controllers",
         "Components"
-    ],
-    "extra": {
-        "merge-plugin": {
-            "include": [
-                "services/*/composer.json"
-            ],
-            "recurse": true,
-            "replace": false,
-            "ignore-duplicates": false,
-            "merge-dev": true,
-            "merge-extra": false,
-            "merge-extra-deep": false,
-            "merge-scripts": false
-        }
-    }
+    ]
 }
