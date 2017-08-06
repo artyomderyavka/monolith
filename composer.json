@@ -12,5 +12,6 @@
     "classmap": [
         "Controllers",
         "Components"
-    ]
+    ],
+    "minimum-stability": "dev"
 }
